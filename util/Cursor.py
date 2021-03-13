@@ -1,6 +1,7 @@
 import win32api
 import win32gui
 from ctypes import windll
+import time
 
 import win32con
 
@@ -24,12 +25,20 @@ def leftUp(pos, hd):
 
 def click_it(pos, hd):
     handle = hd
+    # moveCurPos(pos[0], pos[1])
     client_pos = win32gui.ScreenToClient(handle, pos)
     tmp = win32api.MAKELONG(client_pos[0], client_pos[1])
     win32gui.SendMessage(handle, win32con.WM_ACTIVATE, win32con.WA_ACTIVE, 0)
     win32gui.SendMessage(handle, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, tmp)
     win32gui.SendMessage(handle, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, tmp)
 
+def click_it_a(pos, hd):
+    handle = hd
+    client_pos = win32gui.ScreenToClient(handle, pos)
+    tmp = win32api.MAKELONG(client_pos[0], client_pos[1])
+    win32gui.PostMessage(handle, win32con.WM_ACTIVATE, win32con.WA_ACTIVE, 0)
+    win32gui.PostMessage(handle, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, tmp)
+    win32gui.PostMessage(handle, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, tmp)
 
 def moveCurPos(x, y):  # 移动鼠标
     windll.user32.SetCursorPos(x, y)

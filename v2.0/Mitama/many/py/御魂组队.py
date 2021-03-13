@@ -15,8 +15,9 @@ def main():
     #获取所有阴阳师句柄
     list = get()
 
+    # list = [395746, 263310]
     while True:
-        time.sleep(tt)  # 设置隔2秒运行一次
+        # time.sleep(tt)  # 设置隔2秒运行一次
 
         #循环所有句柄
         for hd in list:

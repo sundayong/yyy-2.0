@@ -1,5 +1,6 @@
 import win32gui
 
+
 hwnd_title = dict()
 
 def get_all_hwnd(hwnd, mouse):
@@ -10,7 +11,8 @@ def get():
     list = [];
     win32gui.EnumWindows(get_all_hwnd, 0)
     for h, t in hwnd_title.items():
-        if t is not "":
+        if t != "":
+            # if t == '夜神模拟器':
             if t == '阴阳师-网易游戏':
                 list.append(h)
                 print(h)
